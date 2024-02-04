@@ -5,7 +5,8 @@ import {
     createVideo,
     getVideoType,
     getVideoWithType,
-    getVideoPage
+    getVideoPage,
+    getVideoDetail
 } from '../controllers/videoController.js';
 const videoRoute = express.Router();
 
@@ -21,5 +22,8 @@ videoRoute.get("/get-video-with-type/:typeId", getVideoWithType);
 
 // API get video page
 videoRoute.get("/get-video-page/:page", getVideoPage);
+
+//API get video detail
+videoRoute.get("/get-video-detail/:videoId", getVideoDetail);
 
 export default videoRoute;

@@ -61,10 +61,24 @@ let getVideoPage = async (req, res) => {
     responseAPI(res, 200, { content: data, totalPage }, "success");
 }
 
+let getVideoDetail = async (req, res) => {
+    let { videoId } = req.params;
+
+    let data = await model.video.findOne({
+        where: {
+            video_id: videoId
+        },
+        include: ["user"]
+    });
+    // let data = await model.video.findByPk(videoId)
+    responseAPI(res, 200, data, "success");
+}
+
 export {
     getVideo,
     createVideo,
     getVideoType,
     getVideoWithType,
-    getVideoPage
+    getVideoPage,
+    getVideoDetail
 }
